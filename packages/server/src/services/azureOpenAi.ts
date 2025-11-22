@@ -1,19 +1,26 @@
-import { DefaultAzureCredential, getBearerTokenProvider } from "@azure/identity";
-import { OpenAI } from "openai";
+import { openAIClient } from '../lib/openAi.js';
 
+class AzureOpenAIService {
+  private client: any;
 
-const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
+  constructor(client: any) {
+    this.client = client;
+  }
 
-const tokenProvider = getBearerTokenProvider(
-  new DefaultAzureCredential(),
-  'https://cognitiveservices.azure.com/.default');
+  responses({ instructions, input, max_output_tokens }:
+    { instructions: string; input: string; max_output_tokens: number; }) {
+    return this.client.responses.create({
+      model: process.env.AZURE_OPENAI_DEPLOYMENT_NAME!,
+      instructions,
+      input,
+      max_output_tokens,
+    }) as any;
+  }
+}
 
-const openAIClient = new OpenAI({
-  baseURL: endpoint,
-  apiKey: tokenProvider
-});
+const azureOpenAIService = new AzureOpenAIService(openAIClient);
 
-export { openAIClient };
+export { azureOpenAIService };
 
 
 

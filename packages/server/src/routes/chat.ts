@@ -1,16 +1,6 @@
 const chatRoute = {
   method: 'GET',
-  url: '/chat',
-  schema: {
-    response: {
-      200: {
-        type: 'object',
-        properties: {
-          chat: { type: 'string' }
-        }
-      }
-    }
-  }
+  url: '/chat'
 }
 
 export const chatRoutes = (controllers: any) => (

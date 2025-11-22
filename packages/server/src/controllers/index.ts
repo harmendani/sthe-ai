@@ -1,2 +1,3 @@
-export { default } from "./chatMessageController.js";
+import * as controllers from "./chatMessageController.js";
 
+export default controllers;
