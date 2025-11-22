@@ -3,7 +3,10 @@ loadEnvFile();
 
 const config = {
   PORT: Number(process.env.PORT) || 3001,
-  NODE_ENV: process.env.ENV ?? "dev",
+  ENV: process.env.ENV ?? "dev",
+  AZURE_OPENAI_API_KEY: process.env.AZURE_OPENAI_API_KEY ?? "",
+  AZURE_OPENAI_ENDPOINT: process.env.AZURE_OPENAI_ENDPOINT ?? "",
+  AZURE_OPENAI_DEPLOYMENT_NAME: process.env.AZURE_OPENAI_DEPLOYMENT_NAME ?? "",
 } as const;
 
 export default config;

@@ -1,19 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es2022",
-    "moduleResolution": "bundler",
-    "lib": [
-      "ES6"
-    ],
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "target": "es2022",
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
+    "removeComments": true,
   }
 }
