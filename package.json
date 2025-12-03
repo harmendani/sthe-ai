@@ -5,6 +5,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "build-server": "yarn workspace server run build",
+    "run-server": "yarn workspace server run start"
+  },
   "devDependencies": {
     "@types/node": "^24.10.0",
     "typescript": "^5.9.3"

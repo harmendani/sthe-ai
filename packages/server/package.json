@@ -6,7 +6,9 @@
   "main": "index",
   "scripts": {
     "dev": "yarn predev && tsx src",
-    "predev": "run -T tsc --noEmit"
+    "predev": "tsc --noEmit",
+    "build": "tsc",
+    "start": "yarn build && node dist/index.js"
   },
   "dependencies": {
     "@azure/identity": "^4.13.0",
