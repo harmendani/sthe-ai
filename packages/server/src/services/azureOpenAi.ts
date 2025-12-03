@@ -1,11 +1,16 @@
 import { openAIClient } from '../lib/openAi.js';
 
+/* 
+ * This class is responsible to provide and maintain connection with OpenAI service 
+*/
+
 class AzureOpenAIService {
   private client: any;
 
   constructor(client: any) {
     this.client = client;
   }
+
 
   responses({ instructions, input, max_output_tokens }:
     { instructions: string; input: string; max_output_tokens: number; }) {

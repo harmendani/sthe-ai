@@ -1,5 +1,5 @@
 const chatRoute = {
-  method: 'GET',
+  method: 'POST',
   url: '/chat'
 }
 
