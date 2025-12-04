@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "main": "index",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "yarn predev && tsx src",
     "predev": "tsc --noEmit",
-    "build": "tsc",
-    "start": "yarn build && node dist/index.js"
+    "build": "yarn -T run tsc",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@azure/identity": "^4.13.0",
@@ -16,6 +16,8 @@
     "openai": "^6.9.1"
   },
   "devDependencies": {
-    "tsx": "^4.20.6"
+    "@types/node": "^24.10.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   }
 }

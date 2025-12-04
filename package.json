@@ -1,16 +1,13 @@
 {
-  "name": "sthe-ai",
+  "name": "sthe-ai-app",
   "packageManager": "yarn@4.11.0",
   "version": "0.1.0",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "build-server": "yarn workspace server run build",
-    "run-server": "yarn workspace server run start"
-  },
-  "devDependencies": {
-    "@types/node": "^24.10.0",
-    "typescript": "^5.9.3"
+    "dev:server": "yarn workspace server run dev",
+    "build:server": "yarn workspace server run build",
+    "start:server": "yarn workspace server run start"
   }
 }

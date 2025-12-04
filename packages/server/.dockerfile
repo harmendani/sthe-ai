@@ -1,12 +1,19 @@
-# FROM  node:3.22-alpine
-# RUN apk add --no-cache gcompat
+FROM  node:alpine3.22
 
-# WORKDIR /app
-# COPY package*.json ./
-# RUN npm ci
-# # Copy the the files you need
-# COPY . ./
+RUN apk add --no-cache gcompat
 
+RUN npm install --g corepack --force
 
+RUN corepack enable
 
-# USER 1000
+WORKDIR /app
+
+COPY /packages/server .
+
+RUN npm i
+
+RUN npm run build
+
+CMD ["node"]
+
+USER 1000
