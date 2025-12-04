@@ -1,19 +1,21 @@
-FROM  node:alpine3.22
+FROM  node:25-alpine
 
 RUN apk add --no-cache gcompat
 
-RUN npm install --g corepack --force
+RUN npm install --g corepack -f
 
 RUN corepack enable
 
 WORKDIR /app
 
-COPY /packages/server .
+COPY . .
 
-RUN npm i
+RUN ls -la
 
-RUN npm run build
+RUN yarn install
 
-CMD ["node"]
+RUN yarn build:server
+
+CMD ["yarn", "start:server"]
 
 USER 1000

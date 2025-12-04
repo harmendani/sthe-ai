@@ -10,7 +10,7 @@ const fastify = Fastify({
 fastify.register(routes)
 
 try {
-  fastify.listen({ port: config.PORT })
+  fastify.listen({ port: config.PORT, host: '::' })
 }
 catch (err) {
   fastify.log.error(err)
