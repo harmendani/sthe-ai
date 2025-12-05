@@ -5,7 +5,8 @@ node_modules
 coverage
 
 .DS_Store
-.env.*
+.env
+*.env
 .idea
 .git
 .vscode
