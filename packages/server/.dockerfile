@@ -1,33 +1,32 @@
-FROM node:25-alpine AS base
+FROM node:22-alpine AS base
 
-RUN npm i -g corepack -f
+RUN corepack enable
 
 WORKDIR /app
 
 COPY package.json yarn.lock .yarnrc.yml  ./
 COPY packages/server/package.json ./packages/server/package.json
+COPY packages/server/.env ./
 
 RUN yarn install --immutable
 
 COPY . .
 
-RUN yarn workspace server build
-RUN yarn workspace server build
+RUN yarn build:server
 
-FROM node:25-alpine AS production
+FROM node:22-alpine AS stage
 
 WORKDIR /app
 
-RUN npm i -g corepack -f
+RUN corepack enable
 
-COPY --from=base /app/.pnp.cjs ./
-COPY --from=base /app/.yarn/cache ./.yarn/cache
-COPY --from=base /app/package.json ./
-COPY --from=base /app/packages/server/package.json ./packages/server/
+COPY --from=base /app/package.json /app/yarn.lock /app/.yarnrc.yml  ./
+COPY --from=base /app/packages/server/package.json ./packages/server/package.json
 COPY --from=base /app/packages/server/dist ./packages/server/dist
+COPY --from=base /app/.env ./
 
-USER 1000
-EXPOSE 3001
+RUN yarn workspaces focus server --production
+
 CMD ["yarn", "node", "packages/server/dist/index.js"]
 
 
